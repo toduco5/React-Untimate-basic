@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:
+        system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #f3f2f2;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+.todo-title {
+    text-align: center;
+    font-size: large;
+
+}
+
+
+
+@supports (background-clip: text) or (-webkit-background-clip: text) or (-webkit-text-fill-color: transparent) {
+    .todo-title {
+        /* https://grabient.com/HQFgrA7ANKBsCcMBMBGWMTyRsJlL2AA5YwYJ4BmGI3GWEQsJaS0ABnZhTGpThQxmg9kA */
+
+        background: linear-gradient(90deg,
+                #2a001b 0%,
+                #78130c 16.667%,
+                #ce480e 33.333%,
+                #ff8d22 50%,
+                #ffd543 66.667%,
+                #ffff69 83.333%,
+                #ffff8d 100%);
+
+        color: transparent;
+
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.todo-title {
+    background-size: 300% 300%;
+    animation: moveColor 3s infinite ease-in-out;
+}
+
+@keyframes moveColor {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.todo-item {
+    border: 1px solid blue;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.btn_input {
+    padding: 50px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_input input {
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.btn_input button {
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.todo-content {
+    text-align: justify;
+    font-weight: 600;
+    line-height: 1.5;
+    padding: 0 50px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.todo-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+    animation: LogoSpiner 3s infinite ease-in-out;
+}
+
+.todo-image img {
+    width: 200px;
+    height: 200px;
+}
+
+@keyframes LogoSpiner {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
