@@ -105,12 +105,18 @@ body {
     align-items: center;
     justify-content: center;
     padding: 30px 0;
-    animation: LogoSpiner 3s infinite ease-in-out;
 }
 
 .todo-image img {
     width: 200px;
     height: 200px;
+    animation: LogoSpiner 6s linear infinite;
+}
+
+
+.todo-image img:hover {
+    transition: 0.3s;
+    filter: drop-shadow(0 0 2em #646cffaa);
 }
 
 @keyframes LogoSpiner {
