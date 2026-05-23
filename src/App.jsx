@@ -9,13 +9,18 @@ const App = () => {
     address: "Hà Nội",
     country: "Việt Nam"
   }
+  const dataNew = (name) => {
+    alert(`Hello ${name}`)
+  }
   return (
     <div className="todo-container">
       <div className="todo-title">
         <h1>Todo list</h1>
       </div>
       <div className="todo-item">
-        <Btn_Input />
+        <Btn_Input
+          dataNew={dataNew}
+        />
         <Todo_Content
           fullName={name}
           age={age}
