@@ -2,9 +2,10 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import MyComponent from './assets/component/MyComponent.jsx'
+import MyComponent from './assets/component/learn/MyComponent'
+import { FirstComponent, SecondComponent } from './assets/component/learn/n_component'
 
-const App = () =>{
+const App = () => {
   const [count, setCount] = useState(0)
   return (
     <>
@@ -17,11 +18,13 @@ const App = () =>{
         </a>
       </div>
       <h1>Chào anh Tô Đức</h1>
-      <MyComponent/>
+      <MyComponent />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <FirstComponent />
+        <SecondComponent />
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
