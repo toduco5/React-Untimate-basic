@@ -1,5 +1,8 @@
 const Todo_Content = (props) => {
     const { fullName, age, data } = props
+    // console.log("Todo_Content ", props)
+    // const todoList = props.todoList
+    console.log("in ra", props.todoList)
     return (
         <div className="todo-content">
             <p>
@@ -11,6 +14,14 @@ const Todo_Content = (props) => {
                 dolor. Nemo dolor dolorum corporis qui? Quasi accusantium illo
                 adipisci ab, perferendis omnis dolore?
             </p>
+            <div
+                style={{
+                    color: "red",
+                    fontSize: "20px",
+                    fontWeight: "bold"
+                }}>
+                {JSON.stringify(props.todoList)}
+            </div>
         </div>
     )
 }
