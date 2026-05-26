@@ -6,16 +6,17 @@ const Btn_Input = (props) => {
     // dataNew("tttoduc")
 
     const handCLick = () => {
-        console.log("check input: ", inputValue)
+        dataNew(inputValue)
     }
     const handChange = (name) => {
         setInputValue(name)
+        console.log(inputValue)
     }
     return (
         <>
             <div className="btn_input">
                 <input type="text" placeholder="điền vào đây"
-                    onChange={(event)=>{handChange(event.target.value)}}
+                    onChange={(event) => { handChange(event.target.value) }}// lấy giá trị đang nhập
                 />
                 <button
                     onClick={handCLick}

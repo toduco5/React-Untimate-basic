@@ -2,7 +2,7 @@ const Todo_Content = (props) => {
     const { fullName, age, data } = props
     // console.log("Todo_Content ", props)
     // const todoList = props.todoList
-    console.log("in ra", props.todoList)
+    console.log("in ra", props.todoList)// kế thừa component todolist từ app.jsx(props)
     return (
         <div className="todo-content">
             <p>
