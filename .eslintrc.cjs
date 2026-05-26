@@ -11,7 +11,10 @@ module.exports = {
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
-  rules: {
+  rules: { // 3 dong dau
+     'no-unused-vars': 'off',
+  'react/prop-types': 'off',
+  'react/no-unescaped-entities': 'off',
     'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': [
       'warn',

@@ -10,7 +10,7 @@ const Btn_Input = (props) => {
     }
     const handChange = (name) => {
         setInputValue(name)
-        console.log(inputValue)
+        console.log("in ra", inputValue)
     }
     return (
         <>
