@@ -63,10 +63,10 @@ body {
 }
 
 .todo-item {
-    border: 1px solid blue;
+
     margin: 15px 0;
     padding: 20px;
-    border-radius: 30px;
+
 }
 
 .btn_input {
@@ -90,6 +90,13 @@ body {
 }
 
 .todo-content {
+    border: 1px solid blue;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.todo-content {
     text-align: justify;
     font-weight: 600;
     line-height: 1.5;
@@ -99,6 +106,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
 }
+
 .btn-todo-content {
     display: flex;
     justify-content: space-between;

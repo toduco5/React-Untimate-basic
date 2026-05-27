@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 const Btn_Input = (props) => {
-    const [inputValue, setInputValue] = useState("To duc")
+    const [inputValue, setInputValue] = useState("")
     const { dataNew } = props
     // dataNew("tttoduc")
 

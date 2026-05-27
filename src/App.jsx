@@ -34,15 +34,19 @@ const App = () => {
         <Btn_Input
           dataNew={dataNew}
         />
-        <Todo_Content
-          // fullName={name}
-          // age={age}
-          // data={data}
-          todoList={todoList}
-        />
-        <div className="todo-image">
-          <img src={Logo} alt="ảnh " />
-        </div>
+
+        {todoList.length > 0 ?
+          <Todo_Content
+            // fullName={name}
+            // age={age}
+            // data={data}
+            todoList={todoList}
+          />
+          :
+          <div className="todo-image">
+            <img src={Logo} alt="ảnh " />
+          </div>
+        }
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ const Todo_Content = (props) => {
             {todoList.map((item, index) => {
                 console.log("check map: ", item, index)
                 return (
-                    <div className="btn-todo-content">
+                    <div className="btn-todo-content" key={item.id}>
                         <div>
                             {item.id}.{item.name}
                         </div>
