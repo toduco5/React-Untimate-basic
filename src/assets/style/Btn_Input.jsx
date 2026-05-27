@@ -7,7 +7,6 @@ const Btn_Input = (props) => {
 
     const handdleCLick = () => {
         dataNew(inputValue)
-        console.log(inputValue)
         setInputValue("")// sau khi clisck lamf moi du lieu
     }
     const handdleChange = (name) => {
