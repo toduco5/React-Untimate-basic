@@ -5,24 +5,25 @@ const Btn_Input = (props) => {
     const { dataNew } = props
     // dataNew("tttoduc")
 
-    const handCLick = () => {
+    const handdleCLick = () => {
         dataNew(inputValue)
         console.log(inputValue)
         setInputValue("")// sau khi clisck lamf moi du lieu
     }
-    const handChange = (name) => {
+    const handdleChange = (name) => {
         setInputValue(name)
-        // console.log("in ra", inputValue)
+
+        console.log("name", name)
     }
     return (
         <>
             <div className="btn_input">
                 <input type="text" placeholder="điền vào đây"
-                    onChange={(event) => { handChange(event.target.value) }}// lấy giá trị đang nhập
+                    onChange={(event) => { handdleChange(event.target.value) }}// lấy giá trị đang nhập
                     value={inputValue}
                 />
                 <button
-                    onClick={handCLick}
+                    onClick={handdleCLick}
                 >Add</button>
             </div>
             <div>
