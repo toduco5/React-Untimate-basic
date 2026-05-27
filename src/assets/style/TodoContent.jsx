@@ -1,18 +1,27 @@
 const Todo_Content = (props) => {
-    const { fullName, age, data } = props
+    const { todoList } = props
     // console.log("Todo_Content ", props)
     // const todoList = props.todoList
-    console.log("in ra", props.todoList)// kế thừa component todolist từ app.jsx(props)
+    console.log("in ra", todoList)// kế thừa component todolist từ app.jsx(props)
     return (
         <div className="todo-content">
+            {todoList.map((item, index) => {
+                console.log("check map: ", item, index)
+                return (
+
+                    <div className="btn-todo-content">
+                        <div>
+                            {item.id}.{item.name}
+                        </div>
+                        <button>delete</button>
+
+                    </div>
+                )
+
+            })}
             <p>
-                My name is {fullName} and I'm {age} years old, form {data.address} - {data.country} <hr />
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem tempora
-                error, nulla sequi a eveniet dolorum tempore nostrum quos dignissimos
-                cupiditate minima facilis fugiat impedit modi eius laboriosam
-                quibusdam temporibus illum corporis odit fuga tenetur voluptatibus
-                dolor. Nemo dolor dolorum corporis qui? Quasi accusantium illo
-                adipisci ab, perferendis omnis dolore?
+                My name is {props.name} and I'm {props.age} years old, form {props.data.address} - {props.data.country} <hr />
+
             </p>
             <div
                 style={{

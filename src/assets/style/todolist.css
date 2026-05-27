@@ -99,6 +99,11 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
 }
+.btn-todo-content {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 .todo-image {
     display: flex;

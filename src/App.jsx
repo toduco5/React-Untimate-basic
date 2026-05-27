@@ -17,7 +17,12 @@ const App = () => {
 
   ])
   const dataNew = (name) => {
-    alert(`Hello ${name}`)
+    const addData = {
+      id: todoList.length + 1,
+      name: name
+    }
+    setTodoList([...todoList, addData])
+    alert(`Thêm mới thành công "${name}"`)
   }
 
   return (
