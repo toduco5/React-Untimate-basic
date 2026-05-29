@@ -21,9 +21,16 @@ const Btn_Input = (props) => {
                     onChange={(event) => { handdleChange(event.target.value) }}// lấy giá trị đang nhập
                     value={inputValue}
                 />
-                <button
-                    onClick={handdleCLick}
-                >Add</button>
+                {inputValue.trim().length > 0 ?
+                    <button
+                        onClick={handdleCLick}
+                    >Add</button>
+                    :
+                    <button
+                      onClick={handdleCLick}
+                        disabled
+                    >Add</button>
+                }
             </div>
             <div>
                 my name is = {inputValue}
