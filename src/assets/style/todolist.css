@@ -111,6 +111,9 @@ body {
     display: flex;
     justify-content: space-between;
 }
+.btn-todo-content button{
+    cursor: pointer;
+}   
 
 
 .todo-image {

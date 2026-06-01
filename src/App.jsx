@@ -11,11 +11,17 @@ const App = () => {
   //   country: "Việt Nam"
   // }
   const [todoList, setTodoList] = useState([
-    // { id: 1, name: "Tô Minh Đức" },
-    // { id: 2, name: "Nguyễn Văn A" },
-    // { id: 3, name: "Trần Văn B" }
+    { id: 1, name: "Tô Minh Đức" },
+    { id: 2, name: "Nguyễn Văn A" },
+    { id: 3, name: "Trần Văn B" }
 
   ])
+  const deleteTodo = (id) => {
+    const newTodo = todoList.filter(item => item.id !== id)
+    setTodoList(newTodo) // gan nguoc lai
+    console.log("delete", id)
+  }
+
   const dataNew = (name) => {
     const addData = {
       id: todoList.length + 1,
@@ -41,6 +47,7 @@ const App = () => {
             // age={age}
             // data={data}
             todoList={todoList}
+            deleteTodo={deleteTodo}
           />
           :
           <div className="todo-image">

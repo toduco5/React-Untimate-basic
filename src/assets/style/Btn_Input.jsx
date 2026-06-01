@@ -6,11 +6,11 @@ const Btn_Input = (props) => {
     // dataNew("tttoduc")
 
     const handdleCLick = () => {
-        dataNew(inputValue)
+        dataNew(inputValue.trim())
         setInputValue("")// sau khi clisck lamf moi du lieu
     }
     const handdleChange = (name) => {
-        setInputValue(name)
+        setInputValue(name.trim())
 
         console.log("name", name)
     }
