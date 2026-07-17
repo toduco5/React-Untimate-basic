@@ -111,9 +111,10 @@ body {
     display: flex;
     justify-content: space-between;
 }
-.btn-todo-content button{
+
+.btn-todo-content button {
     cursor: pointer;
-}   
+}
 
 
 .todo-image {
@@ -127,12 +128,19 @@ body {
     width: 200px;
     height: 200px;
     animation: LogoSpiner 6s linear infinite;
+    will-change: filter;
+    transition: filter 300ms;
 }
 
 
 .todo-image img:hover {
-    transition: 0.3s;
-    filter: drop-shadow(0 0 2em #646cffaa);
+    filter: drop-shadow(0 0 2em #61dafbaa);
+
+
+}
+
+.todo-image:hover {
+    filter: drop-shadow(0 0 1em #646cffaa)
 }
 
 @keyframes LogoSpiner {
