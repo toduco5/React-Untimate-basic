@@ -1,12 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './assets/style/todolist.css'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-
+import LoginPage from './pages/login';
+import RegisterPage from './pages/register';
+import UserPage from './pages/User';
+import ProductPage from './pages/product';
+import './styles/global.css'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,19 +17,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <>Login Page</>
+    element: <LoginPage />
   },
   {
     path: "/register",
-    element: <>Register Page</>
+    element: <RegisterPage />
   },
   {
-    path: "/contact",
-    element: <>Contact Page</>
+    path: "/product",
+    element: <ProductPage />
   },
   {
     path: "/User",
-    element: <>User Page</>
+    element: <UserPage />
   }
 ]);
 
