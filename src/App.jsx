@@ -3,6 +3,8 @@ import Btn_Input from './assets/style/Btn_Input'
 import Todo_Content from './assets/style/TodoContent'
 import Logo from './assets/react.svg'
 import { useState } from 'react';
+import Header from './components/layout/header';
+import Footer from './components/layout/footer';
 const App = () => {
   // const name = "Tô Minh Đức"
   // const age = 21
@@ -28,34 +30,38 @@ const App = () => {
       name: name
     }
     setTodoList([...todoList, addData])
-    alert(`Thêm mới thành công "${name}"`)
+    // alert(`Thêm mới thành công "${name}"`)
   }
 
   return (
-    <div className="todo-container">
-      <div className="todo-title">
-        <h1>Todo list</h1>
-      </div>
-      <div className="todo-item">
-        <Btn_Input
-          dataNew={dataNew}
-        />
-
-        {todoList.length > 0 ?
-          <Todo_Content
-            // fullName={name}
-            // age={age}
-            // data={data}
-            todoList={todoList}
-            deleteTodo={deleteTodo}
+    <>
+      <Header />
+      <div className="todo-container">
+        <div className="todo-title">
+          <h1>Todo list</h1>
+        </div>
+        <div className="todo-item">
+          <Btn_Input
+            dataNew={dataNew}
           />
-          :
-          <div className="todo-image">
-            <img src={Logo} alt="ảnh " />
-          </div>
-        }
+
+          {todoList.length > 0 ?
+            <Todo_Content
+              // fullName={name}
+              // age={age}
+              // data={data}
+              todoList={todoList}
+              deleteTodo={deleteTodo}
+            />
+            :
+            <div className="todo-image">
+              <img src={Logo} alt="ảnh " />
+            </div>
+          }
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
