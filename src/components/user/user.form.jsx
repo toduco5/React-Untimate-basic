@@ -1,27 +1,57 @@
-import { Input } from 'antd';
-import { Button, Flex } from 'antd';
+import { Input, Button, notification } from 'antd';
 import './styles/user.foem.css'
+import { useState } from 'react';
+import { createUserApi } from '../../services/api.service';
 const UserForm = () => {
+    const [fullName, setFullName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [phone, setPhone] = useState("")
+    const handleClick = async () => {
+       const res = await createUserApi(fullName,email,password,phone)
+        console.log("res",res.data)
+        if(res.data){
+            notification.success({
+                message:`success ${fullName}`,
+                description:'User created successfully'
+            })
+        }else{
+            notification.error({
+                message:`error ${fullName}`,
+                description:JSON.stringify(res.message)
+            })
+        }
+    }
     return (
         <div className="user-form">
             <div>
-                <label htmlFor="username">username</label>
-                <Input id="username" placeholder="Basic usage" />
+                <label htmlFor="fullname">Full name</label>
+                <Input id="fullname" placeholder="Basic usage"
+                    value={fullName}
+                    onChange={(event) => setFullName(event.target.value)}
+                />
             </div>
             <div>
                 <label htmlFor="email">email</label>
-                <Input id="email" placeholder="Basic usage" />
+                <Input id="email" placeholder="Basic usage"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)} />
             </div>
             <div>
                 <label htmlFor="password">password</label>
-                <Input.Password id="password" placeholder="Basic usage" />
+                <Input.Password id="password" placeholder="Basic usage"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)} />
             </div>
             <div>
                 <label htmlFor="phone">phone</label>
-                <Input  id="phone" placeholder="Basic usage" />
+                <Input id="phone" placeholder="Basic usage"
+                    value={phone}
+                    onChange={(event) => setPhone(event.target.value)} />
             </div>
             <div>
-                <Button type="primary">Add</Button>
+                <Button type="primary"
+                    onClick={handleClick}>Add</Button>
             </div>
         </div>
     )
