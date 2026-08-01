@@ -1,20 +1,48 @@
-import {  Table, } from 'antd';
-import { getUserApi } from '../../services/api.service';
-import { useState,useEffect } from 'react';
-const UserTable = () => {
-  const [dataUsers, setDataUsers] = useState([
+import { DeleteOutlined, EditOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import { notification, Popconfirm, Table, } from 'antd';
+import UserUpdateModal from './user.update';
+import { useState } from 'react';
+import UserDetailsModal from './user.details';
+import { deleteUserApi } from '../../services/api.service';
+const UserTable = (props) => {
+  const { dataUsers, loadUser } = props
+  const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false)
+  const [dataUpdate, setDataUpdate] = useState(null)
+  const [dataDetail, setDataDetail] = useState(null)
+  const [isdatadetailopen, setIsdatadetailopen] = useState(false)
+  const handleDelete = async (id) => {
+    const res = await deleteUserApi(id)
+    console.log("res", res.data)
+    if (res.data) {
+      notification.success({
+        message: `success`,
+        description: 'User deleted successfully',
+      })
+      await loadUser()
+    } else {
+      notification.error({
+        message: `error`,
+        description: JSON.stringify(res.message),
+      })
+    }
 
-  ])
-  useEffect(()=>{
-  loadUser()
-
-  },[])
+  }
   const columns = [
     {
       title: 'ID',
       dataIndex: '_id',
       key: '_id',
-      render: text => <a>{text}</a>,
+      render: (_, record) => (
+        <>
+          <a href='#!'
+            onClick={() => {
+              setDataDetail(record);
+              setIsdatadetailopen(true);
+            }}
+          >{record._id}
+          </a>
+        </>
+      ),
     },
     {
       title: 'Họ Tên',
@@ -35,6 +63,32 @@ const UserTable = () => {
       title: 'Vai trò ',
       key: 'role',
       dataIndex: 'role',
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (_, record) => (
+        <div style={{ display: "flex", gap: "20px" }}>
+          <a title='Edit' style={{ fontSize: '20px', color: "blue" }}><EditOutlined
+            onClick={() => {
+              setDataUpdate(record)
+              setIsModalUpdateOpen(true)
+
+            }}
+          /></a>
+          <Popconfirm
+            title="Delete the task"
+            description="Are you sure to delete this task?"
+            onConfirm={() => handleDelete(record._id)}
+            okText="Yes"
+            cancelText="No"
+            icon={<QuestionCircleOutlined style={{ color: 'red' }} />}
+          >
+            <a title='Delete' style={{ fontSize: '20px', color: "red" }}><DeleteOutlined /></a>
+          </Popconfirm>
+
+        </div>
+      ),
     },
   ];
   // const data = [
@@ -60,13 +114,25 @@ const UserTable = () => {
   //     tags: ['cool', 'teacher'],
   //   },
   // ];
-  const loadUser = async () => {
-    const res = await getUserApi()
-    console.log("res ebd: ",res)
-    setDataUsers(res.data)
-  }
+
   return (
-    <Table columns={columns} dataSource={dataUsers} rowKey={"_id"} />
+    <>
+      <Table columns={columns} dataSource={dataUsers} rowKey={"_id"} />
+      <UserUpdateModal
+        isModalUpdateOpen={isModalUpdateOpen}
+        setIsModalUpdateOpen={setIsModalUpdateOpen}
+        dataUpdate={dataUpdate}
+        setDataUpdate={setDataUpdate}
+        loadUser={loadUser}
+      />
+      <UserDetailsModal
+        dataDetail={dataDetail}
+        setDataDetail={setDataDetail}
+        isdatadetailopen={isdatadetailopen}
+        setIsdatadetailopen={setIsdatadetailopen}
+
+      />
+    </>
 
   )
 }
