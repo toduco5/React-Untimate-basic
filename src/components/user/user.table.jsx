@@ -5,7 +5,7 @@ import { useState } from 'react';
 import UserDetailsModal from './user.details';
 import { deleteUserApi } from '../../services/api.service';
 const UserTable = (props) => {
-  const { dataUsers, loadUser } = props
+  const { dataUsers, loadUser, current, pageSize, total, setCurrent, setPageSize, setTotal } = props
   const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false)
   const [dataUpdate, setDataUpdate] = useState(null)
   const [dataDetail, setDataDetail] = useState(null)
@@ -28,6 +28,17 @@ const UserTable = (props) => {
 
   }
   const columns = [
+
+    {
+      title: 'STT',
+      width: '5%',
+      render: (_, record, index) => (
+        <>
+          {index + 1}
+        </>
+      )
+
+    },
     {
       title: 'ID',
       dataIndex: '_id',
@@ -79,6 +90,7 @@ const UserTable = (props) => {
           <Popconfirm
             title="Delete the task"
             description="Are you sure to delete this task?"
+            placement="bottom"
             onConfirm={() => handleDelete(record._id)}
             okText="Yes"
             cancelText="No"
@@ -114,10 +126,32 @@ const UserTable = (props) => {
   //     tags: ['cool', 'teacher'],
   //   },
   // ];
-
+  const onChange = (pagination, filters, sorter, extra) => {
+    if (pagination && pagination.current) {
+      if (+pagination.current !== +current) {
+        setCurrent(+pagination.current)
+      }
+      // if(pagination.pageSize !== pageSize){
+      //   setPageSize(pagination.pageSize)
+      // }
+      // if(pagination.total !== total){
+      //   setTotal(pagination.total)
+      // }
+    }
+  };
   return (
     <>
-      <Table columns={columns} dataSource={dataUsers} rowKey={"_id"} />
+      <Table columns={columns} dataSource={dataUsers} rowKey={"_id"}
+        pagination={
+          {
+            current: current,
+            pageSize: pageSize,
+            showSizeChanger: true,
+            total: total,
+            showTotal: (total, range) => { return (<div> {range[0]}-{range[1]} trên {total} rows</div>) }
+          }}
+        onChange={onChange}
+      />
       <UserUpdateModal
         isModalUpdateOpen={isModalUpdateOpen}
         setIsModalUpdateOpen={setIsModalUpdateOpen}
@@ -130,7 +164,7 @@ const UserTable = (props) => {
         setDataDetail={setDataDetail}
         isdatadetailopen={isdatadetailopen}
         setIsdatadetailopen={setIsdatadetailopen}
-
+        loadUser={loadUser}
       />
     </>
 
