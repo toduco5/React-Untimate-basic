@@ -34,7 +34,7 @@ const UserTable = (props) => {
       width: '5%',
       render: (_, record, index) => (
         <>
-          {index + 1}
+          {(index + 1) + (current - 1) * pageSize}
         </>
       )
 
@@ -127,17 +127,20 @@ const UserTable = (props) => {
   //   },
   // ];
   const onChange = (pagination, filters, sorter, extra) => {
+    // nếu thay đổi trang current
     if (pagination && pagination.current) {
       if (+pagination.current !== +current) {
         setCurrent(+pagination.current)
       }
-      // if(pagination.pageSize !== pageSize){
-      //   setPageSize(pagination.pageSize)
-      // }
-      // if(pagination.total !== total){
-      //   setTotal(pagination.total)
-      // }
     }
+    // nếu thay đổi tổng số phần tử:pageSize
+    if (pagination && pagination.pageSize) {
+      if (+pagination.pageSize !== +pageSize) {
+        setPageSize(+pagination.pageSize)
+        setCurrent(1)
+      }
+    }
+
   };
   return (
     <>
