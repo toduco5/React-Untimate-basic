@@ -12,6 +12,7 @@ import ProductPage from './pages/product';
 import './styles/global.css'
 import TodoApp from './assets/style/TodoApp.jsx';
 import ErrorPage from './pages/error.jsx';
+import { AuthWraper } from './components/context/auth.context.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,8 +45,10 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    {/* <App /> */}
+  // <React.StrictMode>
+   
+    <AuthWraper>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+    </ AuthWraper>
+  /* </React.StrictMode>, */
 )
