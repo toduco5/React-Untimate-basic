@@ -12,7 +12,7 @@ const Btn_Input = (props) => {
     const handdleChange = (name) => {
         setInputValue(name.trim())
 
-        console.log("name", name)
+        // console.log("name", name)
     }
     return (
         <>

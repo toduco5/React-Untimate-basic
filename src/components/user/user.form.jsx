@@ -12,7 +12,7 @@ const UserForm = (props) => {
     const handleSubmit = async () => {
 
         const res = await createUserApi(fullName, email, password, phone)
-        console.log("res", res.data)
+        // console.log("res", res.data)
         if (res.data) {
             notification.success({
                 message: `success ${fullName}`,

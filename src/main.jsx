@@ -13,23 +13,24 @@ import './styles/global.css'
 import TodoApp from './assets/style/TodoApp.jsx';
 import ErrorPage from './pages/error.jsx';
 import { AuthWraper } from './components/context/auth.context.jsx';
+import PrivateRouter from './pages/private.router.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement:<ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
-        index:true,
+        index: true,
         element: <TodoApp />
       },
       {
         path: "/product",
-        element: <ProductPage />
+        element:<PrivateRouter><ProductPage /></PrivateRouter>
       },
       {
         path: "/User",
-        element: <UserPage />
+        element: <PrivateRouter><UserPage /></PrivateRouter>
       }
     ]
   },
@@ -46,9 +47,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
-   
-    <AuthWraper>
+
+  <AuthWraper>
     <RouterProvider router={router} />
-    </ AuthWraper>
+  </ AuthWraper>
   /* </React.StrictMode>, */
 )

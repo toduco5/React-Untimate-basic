@@ -12,7 +12,7 @@ const UserTable = (props) => {
   const [isdatadetailopen, setIsdatadetailopen] = useState(false)
   const handleDelete = async (id) => {
     const res = await deleteUserApi(id)
-    console.log("res", res.data)
+    // console.log("res", res.data)
     if (res.data) {
       notification.success({
         message: `success`,

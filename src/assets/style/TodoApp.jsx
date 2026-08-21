@@ -19,7 +19,7 @@ const TodoApp =()=>{
   const deleteTodo = (id) => {
     const newTodo = todoList.filter(item => item.id !== id)
     setTodoList(newTodo) // gan nguoc lai
-    console.log("delete", id)
+    // console.log("delete", id)
   }
 
   const dataNew = (name) => {

@@ -8,19 +8,19 @@ const LoginPage = () => {
     const [form] = Form.useForm();
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
-        const {setUser} = useContext(AuthContext);
-    
+    const { setUser } = useContext(AuthContext);
+
     const onFinish = async (values) => {
         setLoading(true)
         const res = await LoginUserApi(values.email, values.password)
         if (res && res.data) {
-            
+
             setLoading(false)
             notification.success({
                 message: 'Success',
-                description: 'Login successfully!',               
+                description: 'Login successfully!',
             })
-            localStorage.setItem("access_token",res.data.access_token)
+            localStorage.setItem("access_token", res.data.access_token)
             setUser(res.data.user)
             navigate('/')
         } else {
@@ -32,9 +32,9 @@ const LoginPage = () => {
         }
     };
     const onFinishFailed = errorInfo => {
-        console.log('Failed:', errorInfo);
+        // console.log('Failed:', errorInfo);
     };
-    
+
 
     return (
         <Row justify='center'>
@@ -43,8 +43,8 @@ const LoginPage = () => {
                     style={{
                         padding: '20px',
                         margin: "60px 0",
-                        border:"1px solid #ccc",
-                        borderRadius:"10px"
+                        border: "1px solid #ccc",
+                        borderRadius: "10px"
                     }}>
                     <legend>
                         <div>
@@ -62,7 +62,7 @@ const LoginPage = () => {
                         <div
                             style={
                                 {
-                                   margin:"10px 20px"
+                                    margin: "10px 20px"
                                 }}
                         >
                             <Form.Item
@@ -85,22 +85,26 @@ const LoginPage = () => {
                                     required: true, message: 'Please input your password!'
                                 }
                                     ,
-                                // {
-                                //     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/,
-                                //     message: 'Must be at least 8 characters, including uppercase, lowercase, number and special character!'
-                                // }
+                                    // {
+                                    //     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/,
+                                    //     message: 'Must be at least 8 characters, including uppercase, lowercase, number and special character!'
+                                    // }
                                 ]}
                             >
-                                <Input.Password />
+                                <Input.Password
+                                    onKeyDown={(event) => {
+                                        if (event.key === 'Enter') form.submit
+                                    }}
+                                />
                             </Form.Item>
 
                             <Form.Item name="remember" valuePropName="checked" label={null}>
                                 <Checkbox>Remember me</Checkbox>
                             </Form.Item>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <Button 
-                                loading={loading}
-                                type="primary" htmlType="submit" onClick={() => form.submit()}>
+                                <Button
+                                    loading={loading}
+                                    type="primary" htmlType="submit" onClick={() => form.submit()}>
                                     Login
                                 </Button>
                                 <Link to='/'>Go To Home <ArrowRightOutlined /></Link>

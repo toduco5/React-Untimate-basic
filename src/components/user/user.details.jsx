@@ -27,9 +27,9 @@ const UserDetailsModal = (props) => {
             setSelectedFile(file)
             setPreview(URL.createObjectURL(file))
         }
-        console.log("file", preview);
+        // console.log("file", preview);
     }
-    console.log("preview", preview);
+    // console.log("preview", preview);
     const handleSavefile = async () => {
         // step 1: upload file
         const resUpload = await handleUploadfile(selectedFile, "avatar")
@@ -54,7 +54,7 @@ const UserDetailsModal = (props) => {
                     description: JSON.stringify(resUpdateAvatar.message),
                 })
             }
-            console.log("check newAvater ", newAvater)
+            // console.log("check newAvater ", newAvater)
         } else {
             notification.error({
                 message: `error upload file`,
@@ -63,7 +63,7 @@ const UserDetailsModal = (props) => {
             })
             return;
         }
-        console.log("check resUpload ", resUpload)
+        // console.log("check resUpload ", resUpload)
 
     }
     return (

@@ -7,7 +7,7 @@ const RegisterPage = () => {
     const navigate = useNavigate();
     const onFinish = async (values) => {
         const res = await registerUserApi(values.fullName, values.email, values.password, values.phone);
-        console.log('Success:', res);
+        // console.log('Success:', res);
         if (res&&res.data) {
             notification.success({
                 message: 'Success',
@@ -22,7 +22,7 @@ const RegisterPage = () => {
         }
     };
     const onFinishFailed = errorInfo => {
-        console.log('Failed:', errorInfo);
+        // console.log('Failed:', errorInfo);
     };
     const [form] = Form.useForm();
 
